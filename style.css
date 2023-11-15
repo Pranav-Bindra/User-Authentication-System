@@ -1,0 +1,29 @@
+.login {
+    text-align: center; /* Center the text horizontally */
+    margin-top: 30vh; /* Move the element up by half of the viewport height, vertically centering it */
+    transform: translateY(-50%); /* Adjust for the element's own height to precisely center it vertically */
+    font-family: 'Franklin Gothic Medium';
+}
+
+.signup{
+    text-align: center; /* Center the text horizontally */
+    margin-top: 30vh; /* Move the element up by half of the viewport height, vertically centering it */
+    transform: translateY(-50%); /* Adjust for the element's own height to precisely center it vertically */
+    font-family: 'Franklin Gothic Medium';
+}
+
+body {
+    /* Set the background image URL */
+    background-image: url('homepage-background.png');
+    
+    /* Set background size to cover the whole viewport */
+    background-size: cover;
+    
+    /* Set background to fixed so it doesn't scroll with the content */
+    background-attachment: fixed;
+}
+
+a {
+    color: black;
+}
+

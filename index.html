@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <main>
+        <div class='login'>
+            <h2>Welcome to XYZ</h2> <br><br>
+            <form id="loginForm">
+                <label for="email">E-mail : </label>
+                <input type="text" id="email" name="email"><br><br>
+                <label for="password"> Password : </label>
+                <input type="password" id="password" name="password"><br><br>
+                <button type="button" id="submitButton">Submit</button>
+            </form>
+        </div>
+        <a href="password_rec.html" class="signup">
+          <h2>Forgot Password?</h2>
+      </a>
+        <a href="signup-page.html" class="signup">
+            <h2>Don't have an account? Click here to sign up</h2>
+        </a>
+        <div id="result" class="message-box"></div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle form submission
+            function submitForm() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                // Basic form validation
+                if (!email || !password) {
+                    document.getElementById('result').textContent = 'Please fill out all fields.';
+                    return;
+                }
+
+                const formData = { email, password };
+
+                fetch('http://localhost:3000/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Server response:', data);
+                        document.getElementById('result').textContent = data.message;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            // Attach the submitForm function to the button click event
+            document.getElementById('submitButton').addEventListener('click', submitForm);
+        });
+    </script>
+</body>
+
+</html>
